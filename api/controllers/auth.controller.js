@@ -1,28 +1,29 @@
-import { errorHandler } from "../../utils/error.js";
-import User from "../models/user.model.js";
-import bcryptjs from "bcryptjs"
-export const signup = async (req,res,next)=>
-{
-    const {username,email,password} = req.body;
-
-    if(!username || !email || !password || username==='' || email==='' || password==='')
+    import { errorHandler } from "../../utils/error.js";
+    import User from "../models/user.model.js";
+    import bcryptjs from "bcryptjs"
+    export const signup = async (req,res,next)=>
     {
-        next(errorHandler(400,'All field are mandotory'));
-    }
-    const hashedPassword =  bcryptjs.hashSync(password,10);
+        const {username,email,password} = req.body;
+        console.log(password);
 
-    const newUser = new User({
-        username,
-        email,
-        password:hashedPassword
-    });
+        if(!username || !email || !password || username=== '' || email=== '' || password=== '')
+        {
+            next(errorHandler(400,'All field are mandotory'));
+        }
+        const hashedPassword =  bcryptjs.hashSync(password,10);
 
-    try{
-        await newUser.save();
-        res.json("signup successfull");
+        const newUser = new User({
+            username,
+            email,
+            password:hashedPassword
+        });
+
+        try{
+            await newUser.save();
+            res.json("signup successfull");
+        }
+        catch(error)
+        {
+            next(error);
+        }
     }
-    catch(error)
-    {
-        next(error);
-    }
-}
