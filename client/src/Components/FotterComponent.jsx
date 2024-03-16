@@ -56,7 +56,6 @@ export const FotterComponent = () => {
                     <Footer.Icon href='#' icon={BsInstagram}/>
                     <Footer.Icon href='https://twitter.com/Varunra65924691' icon={BsTwitter}/>
                     <Footer.Icon href='https://github.com/varun3019' icon={BsGithub}/>
-
                 </div>
             </div>
         </Footer>
