@@ -15,6 +15,11 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    profilePicture:
+    {
+        type:"String",
+        default:"https://cdn.pixabay.com/photo/2016/11/06/19/31/woven-1803874_640.jpg"
+    }
 
 },{timestamps:true})
 
